@@ -1,0 +1,3 @@
+autopy
+opencv-python
+mediapipe
