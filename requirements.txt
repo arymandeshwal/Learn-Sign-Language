@@ -1,3 +1,2 @@
-autopy
 opencv-python
 mediapipe
