@@ -7,7 +7,7 @@ def get_path_image(filename):
   paths=[]
 
 
-  base_path=Path(r"C:\Users\we\Desktop\Amal\PROJECT LEARN HAND LANGUAGE\Learn-Sign-Language")
+  base_path=Path(os.getcwd())
   #print(os.listdir(base_path))
 
   img_path=base_path / filename
@@ -20,3 +20,4 @@ def get_path_image(filename):
 
 ##print(get_path_image("resized_colored_small"))
 ##print(get_path_image("resized_shadow_images"))
+
