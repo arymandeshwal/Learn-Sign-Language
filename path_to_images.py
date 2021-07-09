@@ -18,6 +18,7 @@ def get_path_image(filename):
     paths.append(img)
   return paths
 
-##print(get_path_image("resized_colored_small"))
+#print(get_path_image("resized-alphabets"))
+
 ##print(get_path_image("resized_shadow_images"))
 
