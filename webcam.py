@@ -33,15 +33,19 @@ screen = pygame.display.set_mode(size)
 cap = cv2.VideoCapture(0)
 
 paths=get_path_image("resized_colored_small")
+middle_paths=get_path_image("resized-alphabets")
 current_path=0
 current_image=paths[current_path]
+current_middle_image=middle_paths[current_path]
 while cap.isOpened():
     ## Conditions for pygame window
     for event in pygame.event.get():
         if event.type == pygame.QUIT: sys.exit()
         if pygame.mouse.get_pressed()[0]:
             if current_path<len(paths):
+                current_middle_image=middle_paths[current_path]
                 current_image=paths[current_path]
+                print(current_middle_image)
                 current_path+=1
 
     pygame.draw.line(screen,Cyan,[0,150],[1080,150],4)
@@ -55,6 +59,11 @@ while cap.isOpened():
     right_image=cvimage_to_pygame(right_image)
     screen.blit(right_image,(833,0))
 
+    #TOP middle IMAGE
+    middle_image=cv2.imread(current_middle_image)
+    middle_image=cv2.resize(middle_image,(249,149))
+    middle_image=cvimage_to_pygame(middle_image)
+    screen.blit(middle_image,(415,0))
     
     main_rect = pygame.Rect((220,175),(640,480))
     pygame.draw.rect(screen,Black,main_rect)
