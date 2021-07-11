@@ -58,7 +58,7 @@ def cv2_handdetector(img):
 
     lmk_list = detector.findpositions(img)
 
-    points_to_get = [0,4,8,12,16,20,2,5,9,13,17]
+    points_to_get = [0,4,8,12,16,20]
     
     if lmk_list != None:
         new_list = []
