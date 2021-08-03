@@ -45,31 +45,12 @@ current_path=0
 current_image=paths[current_path]
 current_middle_image=middle_paths[current_path]
 current_shadow_image = shadow_paths[current_path]
+
 while cap.isOpened():
     ## Conditions for pygame window
     for event in pygame.event.get():
         if event.type == pygame.QUIT: sys.exit()
-##        if pygame.mouse.get_pressed()[0]:
-##            print(pygame.mouse.get_pos())
-##
-##        if pygame.key.get_pressed()[pygame.K_RIGHT]:
-##            if current_path<len(paths)-1:
-##                current_path+=1
-##                current_middle_image=middle_paths[current_path]
-##                current_image=paths[current_path]
-##                current_shadow_image = shadow_paths[current_path]
 
-##        if pygame.key.get_pressed()[pygame.K_LEFT]:
-##            if current_path>0:
-##                current_path-=1
-##                current_middle_image=middle_paths[current_path]
-##                current_image=paths[current_path]
-##                current_shadow_image = shadow_paths[current_path]
-##                alpha_points.append(sub_list)
-##                sub_list = [chr(65+current_path)]
-##                print(alpha_points)
-                #print(current_shadow_image)
-                
 
     color = Yellow
 
@@ -95,11 +76,6 @@ while cap.isOpened():
     shadow_image=cv2.resize(shadow_image,(640,480))
     shadow_image=cvimage_to_pygame(shadow_image)
     screen.blit(shadow_image,(220,175))
-    
-    #main_rect = pygame.Rect((220,175),(640,480))
-    #pygame.draw.rect(screen,Black,main_rect)
-
-    
     
 
     ## Getting image from webcam    
@@ -146,9 +122,20 @@ while cap.isOpened():
                 current_middle_image=middle_paths[current_path]
                 current_image=paths[current_path]
                 current_shadow_image = shadow_paths[current_path]
-##        print(get_current_alpha(current_path))
-    
-##        draw_connecting_lines(lmk_list)
+            elif current_path == len(paths)-1:
+                correct_image=cv2.imread("well_done.png")
+                correct_image=cv2.resize(correct_image,(640,480))
+                correct_image=cvimage_to_pygame(correct_image)
+                screen.blit(correct_image,(220,175))
+
+                screen.blit(right_image,(833,0))
+                screen.blit(middle_image,(415,0))
+                screen.blit(image,(0,0))
+                
+                pygame.display.update()
+                time.sleep(2)
+                sys.exit()
+                
     
     ## Drawing on screen
     screen.blit(image,(0,0))
